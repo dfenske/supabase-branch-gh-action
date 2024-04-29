@@ -66,9 +66,10 @@ export async function main(): Promise<void> {
 				throw _err;
 			});
 		const currentBranch = branches.find((b) => b.name === branchName);
+		// https://github.com/supabase/supabase/blob/7ad6594648a1d33a034b32a31148c031200a2c46/apps/studio/components/interfaces/BranchManagement/BranchStatusBadge.tsx#L27
 		if (
 			currentBranch &&
-			(!waitForMigrations || currentBranch.status === "MIGRATIONS_PASSED")
+			(!waitForMigrations || currentBranch.status === "MIGRATIONS_PASSED" || currentBranch.status === "FUNCTIONS_DEPLOYED")
 		) {
 			core.info(`Branch ${branchName} found, status: ${currentBranch.status}`);
 			const branchDetails = await supabase.databaseBranchesBeta
