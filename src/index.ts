@@ -68,7 +68,7 @@ export async function main(): Promise<void> {
 		const currentBranch = branches.find((b) => b.name === branchName);
 		if (
 			currentBranch &&
-			(!waitForMigrations || currentBranch.status === "MIGRATIONS_PASSED" || currentBranch.status === "FUNCTIONS_DEPLOYED")
+			(!waitForMigrations || currentBranch.status === "MIGRATIONS_PASSED")
 		) {
 			core.info(`Branch ${branchName} found, status: ${currentBranch.status}`);
 			const branchDetails = await supabase.databaseBranchesBeta
