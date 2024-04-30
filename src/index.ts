@@ -39,6 +39,7 @@ export async function main(): Promise<void> {
 		// if not available, try to get it from GITHUB_REF
 		branchName = (process.env.GITHUB_REF ?? "").split("refs/heads/")[1];
 	}
+	console.log(branchName);
 
 	if (!branchName) {
 		core.setFailed("Git branch not found");

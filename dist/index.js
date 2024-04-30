@@ -19565,6 +19565,7 @@ async function main() {
   if (!branchName) {
     branchName = (process.env.GITHUB_REF ?? "").split("refs/heads/")[1];
   }
+  console.log(branchName);
   if (!branchName) {
     core.setFailed("Git branch not found");
     return;
